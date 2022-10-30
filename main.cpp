@@ -103,13 +103,10 @@ public:
 };
 
 int main() {
-        Colete colet_1{1, "Documente", 1, 50, "Important"};
-//    Colete colet_2{2,"Bicicleta", 15,100,"Nimic"};
-//    Colete colet_3{1, "Documente", 1, 50, "Important"};
+    Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
 //    Colete colet_4 = colet_3;
 //    colet_3 = colet_2;
-//    //Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
-//    std :: cout << colet_2 << colet_3 << colet_4;
+      // Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
     //std :: cout << curier_1;
     Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
     ex_1.Depunere_Colet(colet_1);
