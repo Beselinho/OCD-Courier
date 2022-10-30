@@ -14,7 +14,11 @@ public:
         os << "Informatii despre curier: " << "\n" << "Nume: "<< cr.nume << "\n" << "Numar de telefon: " << cr.telefon << "\n" << "Adresa: " << cr.adresa <<"\n" << "Salariu (in RON): " << cr.salariu << "\n";
         return os;
     }
-    ~Curieri();
+    void Marire_salariu(){
+        if(salariu < 3354)
+            salariu = salariu + 0.1 * salariu;
+    }
+    ~Curieri() = default;
 };
 
 class Destinatari{
@@ -30,19 +34,19 @@ public:
         return os;
     }
 
-    ~Destinatari();
+    ~Destinatari() = default;
 };
 
 
 class Colete{
     int AWB;
     std :: string nume;
-    int greutate;
-    int distanta;
+    float greutate;
+    float distanta;
     std :: string detalii;
     friend class Expeditori;
 public:
-    Colete(int AWB_, const std :: string& nume_, int greutate_, int distanta_, const std :: string& detalii_) : AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}{};
+    Colete(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_) : AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}{};
 
     Colete(const Colete& other){
         AWB = other.AWB;
@@ -106,9 +110,13 @@ int main() {
     Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
 //    Colete colet_4 = colet_3;
 //    colet_3 = colet_2;
-      // Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
-    //std :: cout << curier_1;
+     Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
+     Curieri curier_2{"Marcel Love", "0741273748", "Strada Principala", 3000};
+
     Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
     ex_1.Depunere_Colet(colet_1);
+    curier_2.Marire_salariu();
+    std :: cout << curier_2;
+
     return 0;
 }
