@@ -48,11 +48,11 @@ public:
 
 
 class Colete{
-    std :: string nume;
-    std :: string detalii;
     int AWB;
+    std :: string nume;
     int greutate;
     int pret;
+    std :: string detalii;
     //Curieri curier_1;
     //Destinatari destinatar_1;
     //Expeditori expeditor_1;
@@ -85,6 +85,7 @@ public:
 
     friend std :: ostream& operator<<(std::ostream& os, const Colete& col) {
         os << "Informatii despre colet: " << "\n" << "Denumire: " << col.nume << "\n" << "AWB: " << col.AWB << "\n" << "Greutate (in kg): " << col.greutate << "\n" << "Pret (in RON): " << col.pret << "\n";
+        return os;
     }
 
 };
