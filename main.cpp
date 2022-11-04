@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 class Clienti{
 protected:
@@ -7,7 +8,7 @@ protected:
         std :: string telefon;
         std :: string adresa;
 public:
-    Clienti(std :: string = "", std :: string = "", std :: string = "",std :: string = "");
+    Clienti(std :: string = " ", std :: string = " ", std :: string = " ",std :: string = " ");
     virtual ~Clienti();
     Clienti(const Clienti &);
     virtual void afisare(std :: ostream &out);
@@ -37,7 +38,7 @@ Clienti :: Clienti(const Clienti& cl){
     adresa = cl.adresa;
 }
 
-std :: istream& operator<<(std :: istream& in, Clienti& cl){
+std :: istream& operator>>(std :: istream& in, Clienti& cl){
     cl.citire(in);
     return in;
 }
@@ -116,20 +117,12 @@ Destinatari :: ~Destinatari(){
 /*Destinatari ::Destinatari(const Destinatari &d){
     cod_primire = d.cod_primire;
 }*/
-int get_cod_primire() {
-    int aux;
-    aux = 1 + (std::rand() % (99999));
-    if (aux <= 9999)
-        get_cod_primire();
-    else
-        return aux;
-    return -1;
-}
 
 void Destinatari ::citire(std::istream &in) {
     Clienti ::citire(in);
     std :: cout << "Codul dvs. de primire este : ";
-    int aux = get_cod_primire();
+    int aux;
+    aux = 1;
     cod_primire = aux;
 }
 std::istream& operator>>(std::istream &in, Destinatari& d){
@@ -216,20 +209,20 @@ public:
 };
 
 int main() {
-//    Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
+    Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
 //    Colete colet_4 = colet_3;
 //    colet_3 = colet_2;
 //     Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
 //     Curieri curier_2{"Marcel Love", "0741273748", "Strada Principala", 3000};
 //
-//    Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
-//    ex_1.Depunere_Colet(colet_1);
+     Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
+     ex_1.Depunere_Colet(colet_1);
 //    curier_2.Marire_salariu();
 //    std :: cout << curier_2;
     /*Clienti client_1{"Marcel", "Love", "0741273748", "Strada Principala"};
     client_1.citire(std :: cin);
     client_1.afisare(std :: cout);*/
-    Destinatari dest_1{"Petrica", "Ion", "07412121221", "Strada Neagoe", 1};
+    Destinatari dest_1{"Petrica", "Ion", "07412121221", "Strada Neagoe", 0};
     dest_1.citire(std :: cin);
     dest_1.afisare(std :: cout);
 
