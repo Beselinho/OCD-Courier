@@ -8,7 +8,7 @@ protected:
         std :: string telefon;
         std :: string adresa;
 public:
-    Clienti(std :: string = " ", std :: string = " ", std :: string = " ",std :: string = " ");
+    Clienti(std :: string, std :: string, std :: string,std :: string);
     virtual ~Clienti();
     Clienti(const Clienti &);
     virtual void afisare(std :: ostream &out);
@@ -31,11 +31,11 @@ Clienti :: ~Clienti(){
     telefon = "";
     adresa ="";
 }
-Clienti :: Clienti(const Clienti& cl){
-    nume = cl.nume;
-    prenume = cl.prenume;
-    telefon = cl.telefon;
-    adresa = cl.adresa;
+Clienti :: Clienti(const Clienti& other){
+    nume = other.nume;
+    prenume = other.prenume;
+    telefon = other.telefon;
+    adresa = other.adresa;
 }
 
 std :: istream& operator>>(std :: istream& in, Clienti& cl){
@@ -83,10 +83,6 @@ public:
         os << "Informatii despre curier: " << "\n" << "Nume: "<< cr.nume << "\n" << "Numar de telefon: " << cr.telefon << "\n" << "Adresa: " << cr.adresa <<"\n" << "Salariu (in RON): " << cr.salariu << "\n";
         return os;
     }
-    void Marire_salariu(){
-        if(salariu < 3354)
-            salariu = salariu + 0.1 * salariu;
-    }
     ~Curieri() = default;
 };
 
@@ -94,7 +90,7 @@ class Destinatari : public Clienti{
 protected:
     int cod_primire;
 public:
-    Destinatari(std :: string ="", std :: string="", std :: string="",std :: string="", int=0);
+    Destinatari(std :: string, std :: string, std :: string,std :: string, int);
     ~Destinatari();
     Destinatari(const Destinatari &);
 
@@ -156,7 +152,7 @@ public:
         greutate = other.greutate;
         distanta = other.distanta;
         detalii = other.detalii;
-        std :: cout << "cc\n";
+        //std :: cout << "cc\n";
 
     }
     Colete& operator=(const Colete& other){
@@ -169,9 +165,7 @@ public:
         return *this;
 
     }
-    ~Colete(){
-        //std :: cout << "salut la revedere!\n";
-    }
+    ~Colete() = default;
 
     friend std :: ostream& operator<<(std::ostream& os, const Colete& col) {
         os << "Informatii despre colet: " << "\n" << "Denumire: " << col.nume << "\n" << "AWB: " << col.AWB << "\n" << "Greutate (in kg): " << col.greutate << "\n" << "Distanta :" << col.distanta <<"\n";
@@ -190,7 +184,7 @@ class Expeditori{
 
 public:
 
-    Expeditori(const std :: string& nume_, const std :: string& telefon_, const std :: string& adresa_, Colete colet_1_) : nume{nume_}, telefon{telefon_}, adresa{adresa_}, colet_1(colet_1_){}
+    Expeditori(const std :: string& nume_, const std :: string& telefon_, const std :: string& adresa_, Colete const &colet_1_) : nume{nume_}, telefon{telefon_}, adresa{adresa_}, colet_1(colet_1_){}
     friend std :: ostream& operator<<(std::ostream& os, const Expeditori& ex){
         os << "Informatii despre expeditor: " << "\n" << "Nume: "<< ex.nume << "\n" << "Numar de telefon: " << ex.telefon << "\n" << "Adresa: " << ex.adresa <<"\n";
         return os;
