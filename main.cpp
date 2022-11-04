@@ -32,7 +32,7 @@ std :: istream& operator>>(std :: istream& in, Clienti& cl){
 }
 
 void Clienti ::citire(std::istream &in) {
-    std :: cout << "Introduceti datele dumneavoastra :" << "\n";
+    std :: cout << "\n" << "Introduceti datele dumneavoastra :" << "\n";
     std :: cout << "Nume :";
     in >> nume;
     std :: cout << "Prenume :";
@@ -50,7 +50,7 @@ std::ostream& operator<<(std :: ostream& out, Clienti& cl){
     return out;
 }
 
-void Clienti ::afisare(std::ostream &out) {
+void Clienti ::afisare(std::ostream &out){
     out << "Numele : "<< nume << "\n";
     out << "Prenumele :" << prenume << "\n";
     out << "Telefonul : "<< telefon << "\n";
@@ -82,8 +82,8 @@ public:
     ~Destinatari();
     Destinatari(const Destinatari &);
 
-    virtual void afisare(std::ostream &out);
-    virtual void citire(std :: istream &in);
+    void afisare(std :: ostream &out) override;
+    void citire(std::istream &in) override;
 
     friend std::ostream& operator<<(std :: ostream& out, Destinatari&);
     friend std::istream& operator>>(std :: istream& in, Destinatari&);
@@ -102,7 +102,7 @@ Destinatari :: ~Destinatari(){
     cod_primire = d.cod_primire;
 }*/
 
-void Destinatari ::citire(std::istream &in) {
+void Destinatari ::citire(std::istream &in){
     Clienti ::citire(in);
     std :: cout << "Codul dvs. de primire este : ";
     int aux;
