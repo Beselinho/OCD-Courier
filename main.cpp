@@ -204,18 +204,10 @@ public:
 
 int main() {
     Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
-//    Colete colet_4 = colet_3;
-//    colet_3 = colet_2;
-//     Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
-//     Curieri curier_2{"Marcel Love", "0741273748", "Strada Principala", 3000};
-//
+
      Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
      ex_1.Depunere_Colet(colet_1);
-//    curier_2.Marire_salariu();
-//    std :: cout << curier_2;
-    /*Clienti client_1{"Marcel", "Love", "0741273748", "Strada Principala"};
-    client_1.citire(std :: cin);
-    client_1.afisare(std :: cout);*/
+
     Destinatari dest_1{"Petrica", "Ion", "07412121221", "Strada Neagoe", 0};
     dest_1.citire(std :: cin);
     dest_1.afisare(std :: cout);
