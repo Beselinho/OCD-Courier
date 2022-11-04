@@ -8,9 +8,10 @@ protected:
         std :: string telefon;
         std :: string adresa;
 public:
-    Clienti(std :: string, std :: string, std :: string,std :: string);
+    Clienti(const std :: string nume_, const std :: string prenume_ , const std :: string telefon_, const std :: string adresa_) : nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_}{};
+    Clienti(const Clienti & other) : nume(other.nume), prenume(other.prenume), telefon(other.telefon), adresa(other.adresa){};
+
     virtual ~Clienti();
-    Clienti(const Clienti &);
     virtual void afisare(std :: ostream &out);
     virtual void citire(std :: istream &in);
 
@@ -18,24 +19,11 @@ public:
     friend std :: istream& operator>>(std :: istream& in, Clienti&);
 };
 
-Clienti :: Clienti(std :: string nume, std :: string prenume , std :: string telefon, std :: string adresa){
-    this->nume = nume;
-    this->prenume = prenume;
-    this->telefon = telefon;
-    this->adresa = adresa;
-}
-
 Clienti :: ~Clienti(){
     nume = "";
     prenume = "";
     telefon = "";
     adresa ="";
-}
-Clienti :: Clienti(const Clienti& other){
-    nume = other.nume;
-    prenume = other.prenume;
-    telefon = other.telefon;
-    adresa = other.adresa;
 }
 
 std :: istream& operator>>(std :: istream& in, Clienti& cl){
@@ -102,7 +90,7 @@ public:
 
 };
 
-Destinatari :: Destinatari(std::string nume, std::string prenume, std::string telefon, std::string adresa, int cod_primire) : Clienti(nume,prenume,telefon,adresa) {
+Destinatari :: Destinatari(const std::string nume, const std::string prenume, const std::string telefon, const std::string adresa, int cod_primire) : Clienti(nume,prenume,telefon,adresa) {
     this->cod_primire = cod_primire;
 }
 
@@ -144,17 +132,10 @@ class Colete{
     std :: string detalii;
     friend class Expeditori;
 public:
+
     Colete(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_) : AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}{};
+    Colete(const Colete& other) : AWB(other.AWB), nume(other.nume), greutate(other.greutate), distanta(other.distanta), detalii(other.detalii){};
 
-    Colete(const Colete& other){
-        AWB = other.AWB;
-        nume = other.nume;
-        greutate = other.greutate;
-        distanta = other.distanta;
-        detalii = other.detalii;
-        //std :: cout << "cc\n";
-
-    }
     Colete& operator=(const Colete& other){
         AWB = other.AWB;
         nume = other.nume;
