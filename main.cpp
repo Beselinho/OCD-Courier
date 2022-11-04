@@ -1,5 +1,73 @@
 #include <iostream>
 
+class Clienti{
+protected:
+        std :: string nume;
+        std :: string prenume;
+        std :: string telefon;
+        std :: string adresa;
+public:
+    Clienti(std :: string = "", std :: string = "", std :: string = "",std :: string = "");
+    virtual ~Clienti();
+    Clienti(const Clienti &);
+    virtual void afisare(std :: ostream &out);
+    virtual void citire(std :: istream &in);
+
+    friend std :: ostream& operator<<(std :: ostream& out, Clienti&);
+    friend std :: istream& operator>>(std :: istream& in, Clienti&);
+};
+
+Clienti :: Clienti(std :: string nume, std :: string prenume , std :: string telefon, std :: string adresa){
+    this->nume = nume;
+    this->prenume = prenume;
+    this->telefon = telefon;
+    this->adresa = adresa;
+}
+
+Clienti :: ~Clienti(){
+    nume = "";
+    prenume = "";
+    telefon = "";
+    adresa ="";
+}
+Clienti :: Clienti(const Clienti& cl){
+    nume = cl.nume;
+    prenume = cl.prenume;
+    telefon = cl.telefon;
+    adresa = cl.adresa;
+}
+
+std :: istream& operator<<(std :: istream& in, Clienti& cl){
+    cl.citire(in);
+    return in;
+}
+
+void Clienti ::citire(std::istream &in) {
+    std :: cout << "Introduceti datele dumneavoastra :" << "\n";
+    std :: cout << "Nume :";
+    in >> nume;
+    std :: cout << "Prenume :";
+    in >> prenume;
+    std :: cout << "Numarul de telefon :";
+    in >> telefon;
+    std :: cout << "Adresa :";
+    in.get();
+    std :: string aux;
+    std::getline(in,aux);
+    adresa = aux;
+}
+std::ostream& operator<<(std :: ostream& out, Clienti& cl){
+    cl.afisare(out);
+    return out;
+}
+
+void Clienti ::afisare(std::ostream &out) {
+    out << "Numele : "<< nume << "\n";
+    out << "Prenumele :" << prenume << "\n";
+    out << "Telefonul : "<< telefon << "\n";
+    out << "Adresa :"<< adresa << "\n";
+}
+
 class Curieri{
     std :: string nume;
     std :: string telefon;
@@ -21,22 +89,63 @@ public:
     ~Curieri() = default;
 };
 
-class Destinatari{
-    std :: string nume;
-    std :: string telefon;
-    std :: string adresa;
+class Destinatari : public Clienti{
+protected:
+    int cod_primire;
 public:
+    Destinatari(std :: string ="", std :: string="", std :: string="",std :: string="", int=0);
+    ~Destinatari();
+    Destinatari(const Destinatari &);
 
-    Destinatari(const std :: string& nume_, const std :: string& telefon_, const std :: string& adresa_) : nume{nume_}, telefon{telefon_}, adresa{adresa_}{}
+    virtual void afisare(std::ostream &out);
+    virtual void citire(std :: istream &in);
 
-    friend std :: ostream& operator<<(std::ostream& os, const Destinatari& ds){
-        os << "Informatii despre destinatar: " << "\n" << "Nume: "<< ds.nume << "\n" << "Numar de telefon: " << ds.telefon << "\n" << "Adresa: " << ds.adresa <<"\n";
-        return os;
-    }
+    friend std::ostream& operator<<(std :: ostream& out, Destinatari&);
+    friend std::istream& operator>>(std :: istream& in, Destinatari&);
 
-    ~Destinatari() = default;
 };
 
+Destinatari :: Destinatari(std::string nume, std::string prenume, std::string telefon, std::string adresa, int cod_primire) : Clienti(nume,prenume,telefon,adresa) {
+    this->cod_primire = cod_primire;
+}
+
+Destinatari :: ~Destinatari(){
+    cod_primire = 0;
+}
+
+/*Destinatari ::Destinatari(const Destinatari &d){
+    cod_primire = d.cod_primire;
+}*/
+int get_cod_primire() {
+    int aux;
+    aux = 1 + (std::rand() % (99999));
+    if (aux <= 9999)
+        get_cod_primire();
+    else
+        return aux;
+    return -1;
+}
+
+void Destinatari ::citire(std::istream &in) {
+    Clienti ::citire(in);
+    std :: cout << "Codul dvs. de primire este : ";
+    int aux = get_cod_primire();
+    cod_primire = aux;
+}
+std::istream& operator>>(std::istream &in, Destinatari& d){
+    d.citire(in);
+    return in;
+}
+
+void Destinatari ::afisare(std::ostream &out) {
+    Clienti :: afisare(out);
+    out << "Codul de primire este : " << cod_primire << "\n";
+}
+
+std::ostream & operator<<(std::ostream& out, Destinatari& d){
+    d.afisare(out);
+    return out;
+}
 
 class Colete{
     int AWB;
@@ -107,16 +216,24 @@ public:
 };
 
 int main() {
-    Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
+//    Colete colet_1{1, "Documente", 1, 50, "Important foarte tare"};
 //    Colete colet_4 = colet_3;
 //    colet_3 = colet_2;
-     Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
-     Curieri curier_2{"Marcel Love", "0741273748", "Strada Principala", 3000};
+//     Curieri curier_1{"Marcel Love", "0741273748", "Strada Principala", 3500};
+//     Curieri curier_2{"Marcel Love", "0741273748", "Strada Principala", 3000};
+//
+//    Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
+//    ex_1.Depunere_Colet(colet_1);
+//    curier_2.Marire_salariu();
+//    std :: cout << curier_2;
+    /*Clienti client_1{"Marcel", "Love", "0741273748", "Strada Principala"};
+    client_1.citire(std :: cin);
+    client_1.afisare(std :: cout);*/
+    Destinatari dest_1{"Petrica", "Ion", "07412121221", "Strada Neagoe", 1};
+    dest_1.citire(std :: cin);
+    dest_1.afisare(std :: cout);
 
-    Expeditori ex_1{"Petrica","074123748","Principala",colet_1};
-    ex_1.Depunere_Colet(colet_1);
-    curier_2.Marire_salariu();
-    std :: cout << curier_2;
+
 
     return 0;
 }
