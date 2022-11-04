@@ -8,7 +8,7 @@ protected:
         std :: string telefon;
         std :: string adresa;
 public:
-    Clienti(const std :: string nume_, const std :: string prenume_ , const std :: string telefon_, const std :: string adresa_) : nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_}{};
+    Clienti(const std :: string& nume_, const std :: string& prenume_ , const std :: string& telefon_, const std :: string& adresa_) : nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_}{};
     Clienti(const Clienti & other) : nume(other.nume), prenume(other.prenume), telefon(other.telefon), adresa(other.adresa){};
 
     virtual ~Clienti();
