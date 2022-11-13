@@ -250,7 +250,7 @@ int main() {
 
     Destinatari dest_1{"Petrica", "Ion", "07412121221", "Strada Neagoe", 0};
 
-    int x;
+    int x = 0;
     std :: cout << "Alegeti operatia pe care doriti sa o efectuati:" << "\n";
     std :: cout << "1. Depunere colet" << "\n";
     std :: cout << "2. Verificati starea unei livrari" << "\n";
