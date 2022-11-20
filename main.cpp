@@ -87,21 +87,13 @@ public:
     void get_curier(Curier curier_1){
         if(curier_1.stare_masina == 1)
             std :: cout << "Coletul va fi preluat de catre curierul " << curier_1.nume << "\n";
-
-        std::random_device rd;
-        std::mt19937 engine{rd()};
-        std::uniform_int_distribution<> dist(1,5);
-        auto stare = dist(engine);
-
-        if(stare == 3)
-            curier_1.stare_masina = 0;
     }
 
     void setLivrari(int l){
         livrari_efectuate += l;
     }
 
-    void prima_de_Craicun(Curier& curier_1){
+    void prima_de_Craicun(Curier const curier_1){
         int decizie;
             if(curier_1.livrari_efectuate == 2){
                 std :: cout << "Felicitari ai primit 300 RON prima de Craciun !";
@@ -112,14 +104,12 @@ public:
                     case 2 : {
                         std::cout << "Nu Accept!";
                         int net = 300;
-                        if (net > 150) {
                             net -= 150;
                             int cas = 0.08 * net;
                             int cass = 0.1 * net;
                             net -= (cas + cass);
                             net = 150 + net;
                             std::cout << "In urma taxelor prima este in valoare de : " << net << "\n";
-                        }
                     }
                         break;
                     case 1:
@@ -242,13 +232,9 @@ public:
 
         std::random_device rd;
         std::mt19937 engine{rd()};
-        std::uniform_int_distribution<> dist(1,9);
-        int count = 6;
-        while(count > 0){
-            auto random_number = dist(engine);
-            colet_1.AWB = colet_1.AWB * 10 + random_number;
-            count--;
-        }
+        std::uniform_int_distribution<> dist(1000000,9999999);
+        auto random_number = dist(engine);
+        colet_1.AWB = random_number;
 
         std :: cout << "AWB-ul coletului dvs este :" << colet_1.AWB << "\n";
     }
@@ -383,15 +369,16 @@ int main() {
     /// Verificare stare colet :
     std :: cout << "Introduceti AWB-ul coletului pe care doriti sa-l verificati :";
     std :: cin >> x;
-    for(unsigned long long i = 0; i < v2.size(); i++)
-        if(x == v2[i]){
+    int ok = 0;
+    for(unsigned long long i = 0; i < v2.size(); i++) {
+        if (x == v2[i]) {
             c1.Starea_colet(c1);
+            //dest_1.generare_cod_primire(dest_1);
+            ok = 1;
             break;
-        }
-        else {
-            std::cout << "Nu exista niciun colet cu AWB-ul introdus";
-            break;
-        }
+        } else if (ok == 0)
+            std::cout << "Nu exista niciun colet cu acest AWB !";
+    }
     return 0;
 }
 
