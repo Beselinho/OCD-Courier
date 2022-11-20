@@ -323,11 +323,6 @@ int main() {
     Curier cr_3{"Toader", "0747123987", "Volkswagen", 1, 4100, 1};
     Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 1};
 
-    vector<Curier> v1;
-    v1.push_back(cr_1);
-    v1.push_back(cr_2);
-    v1.push_back(cr_3);
-    v1.push_back(cr_4);
 
     Colet c1{1234567, "Documente", 1, 56, "Important", 0, cr_1};
     Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile", 2, cr_1};
@@ -345,8 +340,8 @@ int main() {
     v3.push_back(c3.get_stare_colet());
 
 
-     Expeditor ex_1("Love", "Petrica", "07415626753", "Calea Magurii", 0);
-     Expeditor ex_2("Marcel", "Piftel", "07415626753", "Strada Municipiului", 0);
+    Expeditor ex_1("Love", "Petrica", "07415626753", "Calea Magurii", 0);
+    Expeditor ex_2("Marcel", "Piftel", "07415626753", "Strada Municipiului", 0);
 
     Destinatar dest_1{"Dan", "Carmen", "0741568721", "Strada Camplung", 1234};
     Destinatar dest_2{"Vasilescu", "Olguta", "0742190541", "Strada General Grigore", 5689};
@@ -354,7 +349,7 @@ int main() {
     Destinatar dest_4{"Melecsanu", "Viorel", "0745643699", "Strada Gheorgeni", 1568};
 
 
-    int x;
+    int x = 0;
     /// Depunere colet :
         std :: cin >> ex_1;
         std :: cout << "Completati datele destinatarului : ";
