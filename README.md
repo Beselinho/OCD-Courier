@@ -51,5 +51,5 @@
 ## Resurse
 
 - adăugați trimiteri către resursele externe care v-au ajutat sau pe care le-ați folosit
-# Scurta descirere : o firma de curierat ( mai mult un serviciu postal) in care am colete ale persoanelor fizice(Expeditori) livrate de curieri catre destinatari.
+# Scurta descirere : o firma de curierat ( mai mult un serviciu postal) in care am colete ale persoanelor fizice(Expeditor) livrate de curieri catre destinatari.
 
