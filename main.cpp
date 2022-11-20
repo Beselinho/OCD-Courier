@@ -93,9 +93,9 @@ public:
         livrari_efectuate += l;
     }
 
-    void prima_de_Craicun(Curier const curier_1){
-        int decizie;
+    void prima_de_Craicun(const Curier& curier_1){
             if(curier_1.livrari_efectuate == 2){
+                int decizie;
                 std :: cout << "Felicitari ai primit 300 RON prima de Craciun !";
                 std :: cout << " La 3 livrari efecutate iti marim prima la 225 RON prima ! Accepti ?" << "\n";
                 std :: cout << "1.Da / 2.Nu";
@@ -139,7 +139,7 @@ public:
     friend std::ostream& operator<<(std :: ostream& out, Destinatar&);
     friend std::istream& operator>>(std :: istream& in, Destinatar&);
 
-    void generare_cod_primire(Destinatar dest_1){
+    /*void generare_cod_primire(Destinatar dest_1){
         std::random_device rd;
         std::mt19937 engine{rd()};
         std::uniform_int_distribution<> dist(1,9);
@@ -149,7 +149,7 @@ public:
             dest_1.cod_primire = dest_1.cod_primire * 10 + random_number;
             count--;
         }
-    }
+    }*/
 
     /*void verificare_cod(int x, Destinatar dest_1){
         if(x == dest_1.cod_primire)
@@ -370,15 +370,16 @@ int main() {
     std :: cout << "Introduceti AWB-ul coletului pe care doriti sa-l verificati :";
     std :: cin >> x;
     int ok = 0;
-    for(unsigned long long i = 0; i < v2.size(); i++) {
-        if (x == v2[i]) {
-            c1.Starea_colet(c1);
-            //dest_1.generare_cod_primire(dest_1);
+    for (unsigned long long i = 0; i < v2.size(); i++)
+        if (x == v2[1]) {
             ok = 1;
+            c1.Starea_colet(c1);
             break;
-        } else if (ok == 0)
-            std::cout << "Nu exista niciun colet cu acest AWB !";
-    }
+        }
+
+    if(ok != 1)
+        std :: cout << "Nu exista niciun colet cu acest AWB";
+
     return 0;
 }
 
