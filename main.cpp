@@ -10,13 +10,13 @@ protected:
         std :: string prenume;
         std :: string telefon;
         std :: string adresa;
+        virtual void afisare (std :: ostream &out);
+        virtual void citire(std :: istream &in);
 public:
     Client(const std :: string& nume_, const std :: string& prenume_ , const std :: string& telefon_, const std :: string& adresa_) : nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_}{};
     Client(const Client & other) : nume(other.nume), prenume(other.prenume), telefon(other.telefon), adresa(other.adresa){};
 
     virtual ~Client();
-    virtual void afisare (std :: ostream &out);
-    virtual void citire(std :: istream &in);
 
     friend std :: ostream& operator<<(std :: ostream& out, Client&);
     friend std :: istream& operator>>(std :: istream& in, Client&);
@@ -70,7 +70,6 @@ protected:
     int salariu;
     int livrari_efectuate;
 
-    friend class Colete;
 public:
     Curier(const std :: string& nume_, const std :: string& telefon_, const std :: string& masina_, int stare_masina_, int salariu_, int livrari_efectuate_) :
              nume{nume_}, telefon{telefon_},  masina{masina_}, stare_masina{stare_masina_} ,salariu{salariu_}, livrari_efectuate{livrari_efectuate_} {
@@ -97,7 +96,7 @@ public:
             if(curier_1.livrari_efectuate == 2){
                 int decizie;
                 std :: cout << "Felicitari ai primit 300 RON prima de Craciun !";
-                std :: cout << " La 3 livrari efecutate iti marim prima la 225 RON prima ! Accepti ?" << "\n";
+                std :: cout << " La 3 livrari efecutate iti marim prima cu 150 RON prima ! Accepti ?" << "\n";
                 std :: cout << "1.Da / 2.Nu";
                 std :: cin >> decizie;
                 switch(decizie){
@@ -121,10 +120,7 @@ public:
                 }
             }
             else
-                {
-                    std :: cout << "face if u  1";
                     std :: cout << "Felicitari ai primit 150 prima de Craciun ! ";
-        }
     }
 };
 
@@ -179,22 +175,19 @@ std::ostream & operator<<(std::ostream& out, Destinatar& d){
 }
 
 class Colet{
-    int AWB;
-    std :: string nume;
-    float greutate;
-    float distanta;
-    std :: string detalii;
-    int stare_colet;
-    Curier curier_1;
-
-    friend class Curieri;
+    int AWB = 0;
+    std :: string nume = "";
+    float greutate = 0;
+    float distanta = 0;
+    std :: string detalii = "";
+    int stare_colet = 0;
 public:
 
-    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, Curier const& curier_1_) :
-            AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_},  curier_1{curier_1_} {}
+    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_) :
+            AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_} {}
 
     Colet(const Colet& other) : AWB(other.AWB), nume(other.nume), greutate(other.greutate), distanta(other.distanta), detalii(other.detalii),
-                                stare_colet(other.stare_colet), curier_1(other.curier_1){};
+                                stare_colet(other.stare_colet) {};
 
     Colet& operator=(const Colet& other){
         AWB = other.AWB;
@@ -266,12 +259,14 @@ public:
                 std :: cout << "Coletul " << colet_1.nume << " va fi livrat in curand !";
                 break;
         }
+
     }
 };
 
 class Expeditor : public Client{
 protected:
      int avans;
+     std :: vector<Colet> colete;
 public:
     Expeditor(std :: string, std :: string, std :: string, std :: string, int);
     ~Expeditor();
@@ -282,10 +277,26 @@ public:
 
     friend std::ostream& operator<<(std :: ostream& out, Expeditor&);
     friend std::istream& operator>>(std :: istream& in, Expeditor&);
+
+    void add_colet(Colet colet){
+        colete.push_back(colet);
+    }
+
+    auto cautare_AWB(int AWB) const {
+        auto AWB_match = [AWB](auto colet){
+            return colet.getAWB() == AWB;
+        };
+        auto i = std::find_if(std::begin(colete), std::end(colete), AWB_match);
+        if(i == std::end(colete))
+            std::cout << "Nu exista colet cu acest AWB !";
+        else
+            std::cout << "S a gasit coletul";
+        return i;
+    }
 };
 
-Expeditor :: Expeditor(const std::string nume, const std::string prenume, const std::string telefon, const std::string adresa, int ceva) : Client(nume, prenume, telefon, adresa) {
-    this->avans = ceva;
+Expeditor :: Expeditor(const std::string nume, const std::string prenume, const std::string telefon, const std::string adresa, int avans) : Client(nume, prenume, telefon, adresa) {
+    this->avans = avans;
 }
 
 Expeditor :: ~Expeditor(){
@@ -324,24 +335,13 @@ int main() {
     Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 1};
 
 
-    Colet c1{1234567, "Documente", 1, 56, "Important", 0, cr_1};
-    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile", 2, cr_1};
-    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, cr_1};
-
-
-    vector<int> v2;
-    v2.push_back(c1.getAWB());
-    v2.push_back(c2.getAWB());
-    v2.push_back(c3.getAWB());
-
-    vector<int> v3;
-    v3.push_back(c1.get_stare_colet());
-    v3.push_back(c2.get_stare_colet());
-    v3.push_back(c3.get_stare_colet());
+    Colet c1{1234567, "Documente", 1, 56, "Important", 0};
+    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile", 2};
+    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2};
 
 
     Expeditor ex_1("Love", "Petrica", "07415626753", "Calea Magurii", 0);
-    Expeditor ex_2("Marcel", "Piftel", "07415626753", "Strada Municipiului", 0);
+    //Expeditor ex_2("Marcel", "Piftel", "07415626753", "Strada Municipiului", 0);
 
     Destinatar dest_1{"Dan", "Carmen", "0741568721", "Strada Camplung", 1234};
     Destinatar dest_2{"Vasilescu", "Olguta", "0742190541", "Strada General Grigore", 5689};
@@ -349,7 +349,6 @@ int main() {
     Destinatar dest_4{"Melecsanu", "Viorel", "0745643699", "Strada Gheorgeni", 1568};
 
 
-    int x = 0;
     /// Depunere colet :
         std :: cin >> ex_1;
         std :: cout << "Completati datele destinatarului : ";
@@ -362,18 +361,12 @@ int main() {
         cr_1.prima_de_Craicun(cr_1);
         std :: cout << "\n";
     /// Verificare stare colet :
-    std :: cout << "Introduceti AWB-ul coletului pe care doriti sa-l verificati :";
-    std :: cin >> x;
-    int ok = 0;
-    for (unsigned long long i = 0; i < v2.size(); i++)
-        if (x == v2[1]) {
-            ok = 1;
-            c1.Starea_colet(c1);
-            break;
-        }
+    ex_1.add_colet(c1);
+    ex_1.add_colet(c2);
+    ex_1.add_colet(c3);
 
-    if(ok != 1)
-        std :: cout << "Nu exista niciun colet cu acest AWB";
+    ex_1.cautare_AWB(3333333);
+    c3.Starea_colet(c3);
 
     return 0;
 }
