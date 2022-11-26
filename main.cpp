@@ -234,9 +234,6 @@ public:
     int getAWB() {
         return AWB;
     }
-    int get_stare_colet() {
-        return stare_colet;
-    }
 
     void Starea_colet(Colet colet_1){
         if(colet_1.distanta <= 60)
@@ -356,10 +353,6 @@ int main() {
         c1.Depunere_Colet(c1);
         c1.generare_AWB(c1);
         cr_1.get_curier(cr_1);
-    /// Prima de Craciun :
-        cr_1.setLivrari(1);
-        cr_1.prima_de_Craicun(cr_1);
-        std :: cout << "\n";
     /// Verificare stare colet :
     ex_1.add_colet(c1);
     ex_1.add_colet(c2);
@@ -367,6 +360,11 @@ int main() {
 
     ex_1.cautare_AWB(3333333);
     c3.Starea_colet(c3);
+
+    /// Prima de Craciun :
+    cr_1.setLivrari(1);
+    cr_1.prima_de_Craicun(cr_1);
+    std :: cout << "\n";
 
     return 0;
 }
