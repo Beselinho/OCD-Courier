@@ -88,11 +88,7 @@ public:
             std :: cout << "Coletul va fi preluat de catre curierul " << curier_1.nume << "\n";
     }
 
-    void setLivrari(int l){
-        livrari_efectuate += l;
-    }
-
-    void prima_de_Craicun(const Curier& curier_1){
+    /*void prima_de_Craicun(const Curier& curier_1){
             if(curier_1.livrari_efectuate == 2){
                 int decizie;
                 std :: cout << "Felicitari ai primit 300 RON prima de Craciun !";
@@ -121,7 +117,7 @@ public:
             }
             else
                     std :: cout << "Felicitari ai primit 150 prima de Craciun ! ";
-    }
+    }*/
 };
 
 class Destinatar : public Client{
@@ -196,7 +192,7 @@ public:
         distanta = other.distanta;
         detalii = other.detalii;
         stare_colet = other.stare_colet;
-        std :: cout << "op egal\n";
+        //std :: cout << "op egal\n";
         return *this;
 
     }
@@ -231,7 +227,7 @@ public:
 
         std :: cout << "AWB-ul coletului dvs este :" << colet_1.AWB << "\n";
     }
-    int getAWB() {
+    int getAWB() const {
         return AWB;
     }
 
@@ -287,8 +283,21 @@ public:
         if(i == std::end(colete))
             std::cout << "Nu exista colet cu acest AWB !";
         else
-            std::cout << "S a gasit coletul";
+            std::cout << "\n";
         return i;
+    }
+
+    void anulare_colet(const int& AWB){
+        auto AWB_match = [AWB](auto colet){
+            return colet.getAWB() == AWB;
+        };
+        auto i = std::find_if(std::begin(colete), std::end(colete), AWB_match);
+        if(i != colete.end()){
+            colete.erase(i);
+            std :: cout << "Coletul cu AWB-ul " << AWB <<" a fost anulat";
+        }
+        else
+            std::cout << "Nu exista colet cu acest AWB";
     }
 };
 
@@ -360,11 +369,10 @@ int main() {
 
     ex_1.cautare_AWB(3333333);
     c3.Starea_colet(c3);
-
-    /// Prima de Craciun :
-    cr_1.setLivrari(1);
-    cr_1.prima_de_Craicun(cr_1);
     std :: cout << "\n";
+    ///Anulare colet :
+    ex_1.anulare_colet(1234567);
+
 
     return 0;
 }
