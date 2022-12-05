@@ -77,8 +77,9 @@ public:
     }
 
     friend std :: ostream& operator<<(std::ostream& os, const Curier& cr){
-        os << "Informatii despre curier: " << "\n" << "Nume: "<< cr.nume << "\n" << "Numar de telefon: " << cr.telefon  <<"\n"
-            << "Masina curierului :"<<cr.masina << "\n" << "Stare masinii :"<< cr.stare_masina << "\n" << "Salariu (in RON): " << cr.salariu << "\n" << "Livrari efectuate :" << cr.livrari_efectuate << "\n";
+        os << cr.nume << "\n";
+        /*os << "Informatii despre curier: " << "\n" << "Numar de telefon: " << cr.telefon  <<"\n"
+            << "Masina curierului :"<<cr.masina << "\n" << "Stare masinii :"<< cr.stare_masina << "\n" << "Salariu (in RON): " << cr.salariu << "\n" << "Livrari efectuate :" << cr.livrari_efectuate << "\n";*/
         return os;
     }
     ~Curier() = default;
@@ -171,19 +172,21 @@ std::ostream & operator<<(std::ostream& out, Destinatar& d){
 }
 
 class Colet{
+protected:
     int AWB = 0;
     std :: string nume = "";
     float greutate = 0;
     float distanta = 0;
     std :: string detalii = "";
     int stare_colet = 0;
+    Curier curier;
 public:
 
-    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_) :
-            AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_} {}
+    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier& curier_) :
+            AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_}, curier{curier_}{}
 
     Colet(const Colet& other) : AWB(other.AWB), nume(other.nume), greutate(other.greutate), distanta(other.distanta), detalii(other.detalii),
-                                stare_colet(other.stare_colet) {};
+                                stare_colet(other.stare_colet), curier(other.curier) {};
 
     Colet& operator=(const Colet& other){
         AWB = other.AWB;
@@ -192,6 +195,7 @@ public:
         distanta = other.distanta;
         detalii = other.detalii;
         stare_colet = other.stare_colet;
+        curier = other.curier;
         //std :: cout << "op egal\n";
         return *this;
 
@@ -202,6 +206,7 @@ public:
         os << "Informatii despre colet: " << "\n" << "Denumire: " << col.nume << "\n" << "AWB: " << col.AWB << "\n"
            << "Greutate (in kg): " << col.greutate << "\n" << "Distanta :" << col.distanta << "\n";
         os << "Pret (in RON) :" << col.greutate * col.distanta << "\n";
+        os << "Coletul este livrat de catre : " << col.curier << "\n";
         return os;
     }
 
@@ -275,11 +280,11 @@ public:
         colete.push_back(colet);
     }
 
-    auto cautare_AWB(int AWB) const {
-        auto AWB_match = [AWB](auto colet){
+    auto Cautare_AWB(int AWB) const {
+        auto cauta_AWB  = [AWB](auto colet){
             return colet.getAWB() == AWB;
         };
-        auto i = std::find_if(std::begin(colete), std::end(colete), AWB_match);
+        auto i = std :: find_if (std :: begin(colete), std :: end(colete), cauta_AWB);
         if(i == std::end(colete))
             std::cout << "Nu exista colet cu acest AWB !";
         else
@@ -287,11 +292,11 @@ public:
         return i;
     }
 
-    void anulare_colet(const int& AWB){
-        auto AWB_match = [AWB](auto colet){
+    void Anulare_colet(const int& AWB){
+        auto cauta_AWB = [AWB](auto colet){
             return colet.getAWB() == AWB;
         };
-        auto i = std::find_if(std::begin(colete), std::end(colete), AWB_match);
+        auto i = std::find_if(std::begin(colete), std::end(colete), cauta_AWB);
         if(i != colete.end()){
             colete.erase(i);
             std :: cout << "Coletul cu AWB-ul " << AWB <<" a fost anulat";
@@ -341,9 +346,9 @@ int main() {
     Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 1};
 
 
-    Colet c1{1234567, "Documente", 1, 56, "Important", 0};
-    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile", 2};
-    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2};
+    Colet c1{1234567, "Documente", 1, 56, "Important", 0, cr_1};
+    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile", 2, cr_3};
+    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, cr_4};
 
 
     Expeditor ex_1("Love", "Petrica", "07415626753", "Calea Magurii", 0);
@@ -354,7 +359,7 @@ int main() {
     Destinatar dest_3{"Anton", "Anton", "0747693690", "Strada Neagoe Basarab", 8935};
     Destinatar dest_4{"Melecsanu", "Viorel", "0745643699", "Strada Gheorgeni", 1568};
 
-
+    std :: cout << c1;
     /// Depunere colet :
         std :: cin >> ex_1;
         std :: cout << "Completati datele destinatarului : ";
@@ -367,11 +372,11 @@ int main() {
     ex_1.add_colet(c2);
     ex_1.add_colet(c3);
 
-    ex_1.cautare_AWB(3333333);
+    ex_1.Cautare_AWB(3333333);
     c3.Starea_colet(c3);
     std :: cout << "\n";
     ///Anulare colet :
-    ex_1.anulare_colet(1234567);
+    ex_1.Anulare_colet(1234567);
 
 
     return 0;
