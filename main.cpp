@@ -42,13 +42,14 @@ int main() {
     ex_1.add_colet(c1);
     ex_1.add_colet(c2);
     ex_1.add_colet(c3);
+    dest_1.generare_cod_primire(dest_1);
 
     ex_1.Cautare_AWB(3333333);
     c3.Starea_colet(c3);
     std :: cout << "\n";
     ///Anulare colet :
     ex_1.Anulare_colet(1234567);
-
+    ex_1.get_suma();
 
     return 0;
 }

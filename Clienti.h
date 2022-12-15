@@ -33,7 +33,9 @@ private:
     int suma;
     std :: vector<Colet> colete;
 public:
-    Expeditor(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int avans_);
+    Expeditor(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int suma_);
+
+    int get_suma () const;
 
     void add_colet(Colet colet);
 
@@ -53,7 +55,7 @@ public:
 
      ~Destinatar() override = default;
 
-    //void generare_cod_primire(Destinatar dest_1);
+    void generare_cod_primire(Destinatar dest_1);
 };
 
 #endif //OOP_CLIENTI_H

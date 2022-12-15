@@ -28,6 +28,9 @@ std :: ostream& operator<<(std::ostream& os, const Client& cl){
 Expeditor ::Expeditor(const std::string &nume_, const std::string &prenume_, const std::string &telefon_, const std::string &adresa_, int suma_) :
             Client(nume_, prenume_, telefon_, adresa_), suma(suma_) {}
 
+int Expeditor::get_suma() const {
+    return suma;
+}
 void Expeditor::add_colet(Colet colet) {
     colete.push_back(colet);
 }
@@ -59,14 +62,12 @@ void Expeditor::Anulare_colet(const int &AWB) {
 Destinatar ::Destinatar(const std::string &nume_, const std::string &prenume_, const std::string &telefon_, const std::string &adresa_, int cod_primire_) :
              Client(nume_, prenume_, telefon_, adresa_), cod_primire{cod_primire_} {}
 
-/*void Destinatar::generare_cod_primire(Destinatar dest_1) {
+void Destinatar::generare_cod_primire(Destinatar dest_1) {
     std::random_device rd;
     std::mt19937 engine{rd()};
-    std::uniform_int_distribution<> dist(1,9);
-    int count = 3;
-    while(count > 0){
-        auto random_number = dist(engine);
-        dest_1.cod_primire = dest_1.cod_primire * 10 + random_number;
-        count--;
-    }
-}*/
+    std::uniform_int_distribution<> dist(1000,9999);
+    auto random_number = dist(engine);
+    dest_1.cod_primire = random_number;
+
+    std :: cout << "Codul este :" << dest_1.cod_primire << "\n";
+}
