@@ -14,7 +14,6 @@ protected:
     int livrari_efectuate;
 
 public:
-    //virtual ~Curier() = default;
     Curier(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_);
 
     Curier(const Curier &other) = default;

@@ -13,7 +13,7 @@ using std :: vector;
 int main() {
 
     Curier cr_1{"Pintea", "0747399860", "Dacia", 1, 3650, 1};
-    Curier cr_2{"Andrusca", "0789394461", "Ford", 0, 3000, 0};
+    Curier cr_2{"Andrusca", "0789394461", "Ford", 0, 3000, 1};
     Curier cr_3{"Toader", "0747123987", "Volkswagen", 1, 4100, 1};
     Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 1};
 

@@ -6,6 +6,7 @@ Curier ::Curier(const std :: string& nume_, const std :: string& telefon_, const
 std :: ostream& operator<<(std::ostream& os, const Curier& cr){
     os << "Nume Curier :" << cr.nume << "\n";
     os << "Numar de telefon: " << cr.telefon  <<"\n";
+    os << "Masina : " << cr.masina;
     os << "Stare masinii :"<< cr.stare_masina << "\n" ;
     os << "Salariu (in RON): " << cr.salariu << "\n" ;
     os << "Livrari efectuate :" << cr.livrari_efectuate << "\n";
