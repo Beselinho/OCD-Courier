@@ -15,12 +15,12 @@ int main() {
     Curier cr_1{"Pintea", "0747399860", "Dacia", 1, 3650, 1};
     Curier cr_2{"Andrusca", "0789394461", "Ford", 0, 3000, 1};
     Curier cr_3{"Toader", "0747123987", "Volkswagen", 1, 4100, 1};
-    Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 1};
+    //Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 0};
 
 
     Colet c1{1234567, "Documente", 1, 56, "Important", 0, cr_1};
     Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile", 2, cr_3};
-    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, cr_4};
+    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, cr_2};
 
 
     Expeditor ex_1("Love", "Petrica", "07415626753", "Calea Magurii", 0);
