@@ -13,7 +13,58 @@ std :: ostream& operator<<(std::ostream& os, const Curier& cr){
     return os;
 }
 
-void Curier::get_curier(Curier curier_1) {
-        if(curier_1.stare_masina == 1)
-            std :: cout << "Coletul va fi preluat de catre curierul " << curier_1.nume << "\n";
+
+
+Curier_de_zi ::Curier_de_zi(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_, double spor_de_vechime_) :
+        Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), experienta(experienta_), spor_de_vechime{spor_de_vechime_} {}
+
+double Curier_de_zi::bonus_salariu() const {
+    double bonus = 0;
+        if(experienta <= 5)
+            bonus = spor_de_vechime * salariu;
+        else
+            if(experienta > 5 && experienta <= 15)
+                bonus = spor_de_vechime * salariu;
+            else
+                if(experienta > 15)
+                    bonus = spor_de_vechime * salariu;
+    std :: cout << "Totalul de bonus : " << bonus << "\n";
+    return 1;
+}
+
+void Curier_de_zi::lista_curieri_1(Curier* curier_) {
+    if(auto* cr = dynamic_cast<Curier_de_zi*>(curier_)) {
+        std::cout << nume;
+        cr->livrari_efectuate++;
+    }
+    else
+        std :: cout << "nobun";
+}
+
+Curier_de_noapte ::Curier_de_noapte(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_,
+                                    int experienta_, double spor_de_vechime_, double spor_de_noapte_) :
+                   Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), experienta(experienta_), spor_de_vechime{spor_de_vechime_}, spor_de_noapte(spor_de_noapte_) {}
+
+double Curier_de_noapte::bonus_salariu() const {
+    double bonus = 0;
+        if(experienta <= 5)
+            bonus = spor_de_vechime * salariu + spor_de_noapte * salariu;
+        else
+            if(experienta > 5 && experienta <= 15)
+                bonus = spor_de_vechime * salariu + spor_de_noapte * salariu;
+                else
+                    if(experienta > 15)
+                        bonus = spor_de_vechime * salariu + spor_de_noapte * salariu;
+
+    std :: cout << "Totalul de bonus : " << bonus << "\n";
+    return 1;
+}
+
+void ::Curier_de_noapte::lista_curier_2(Curier& curier_) const {
+    if(auto* cr = dynamic_cast<Curier_de_noapte*>(&curier_)) {
+        std::cout << nume;
+        cr->livrari_efectuate++;
+    }
+    else
+        std :: cout << "nobun";
 }

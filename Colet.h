@@ -22,15 +22,21 @@ public :
 
     Colet &operator=(const Colet &other) = default;
 
-    friend std :: ostream &operator<<(std :: ostream &os, const Colet &client_);
+    ~Colet() = default;
 
-    void Depunere_Colet(Colet colet_1);
+    friend std :: ostream &operator<<(std :: ostream &os, const Colet &colet_);
 
-    void generare_AWB(Colet colet_1);
+    void Depunere_Colet();
+
+    static void generare_AWB(Colet colet_1);
+
+    //void primire_colet()
 
     int getAWB() const;
 
-    void Starea_colet(Colet colet_1);
+    double get_pret() const;
+
+    static void Starea_colet(Colet colet_1);
 };
 
 

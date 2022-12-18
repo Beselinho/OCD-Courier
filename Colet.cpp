@@ -1,12 +1,10 @@
-//
-// Created by pisc0 on 12/12/2022.
-//
 
 #include "Colet.h"
 #include <random>
+#include "Exceptii.h"
 
 Colet :: Colet (int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier& curier_) :
-        AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_}, curier{curier_}{}
+        AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_}, curier{curier_} {}
 
 std :: ostream& operator<<(std::ostream& os, const Colet& c){
     os << "AWB : " << c.AWB  <<"\n";
@@ -20,15 +18,20 @@ std :: ostream& operator<<(std::ostream& os, const Colet& c){
     return os;
 }
 
-void Colet::Depunere_Colet(Colet colet_1) {
+void Colet::Depunere_Colet() {
     std :: cout << "Completati datele coletului : "<< "\n";
     std :: cout << "Nume colet :" << "\n";
-    std :: cin >> colet_1.nume;
+    std :: cin >> nume;
     std :: cout << "Greutate colet :" << "\n";
-    std :: cin >> colet_1.greutate;
+    std :: cin >> greutate;
     std :: cout << "Distanta (in km) :" << "\n";
-    std :: cin >> colet_1.distanta;
-    std :: cout << "Pretul (in RON) pentru colet este :" << (colet_1.distanta * colet_1.greutate) << "\n";
+    std :: cin >> distanta;
+    std :: cout << "Pretul (in RON) pentru colet este :" << (distanta * greutate) << "\n";
+
+        if (greutate == 0)
+            throw eroare_colet("Nu s-a introdus greutatea coletului");
+        if (distanta == 0)
+            throw eroare_colet("Nu s-a introdus distanta");
 }
 
 void Colet::generare_AWB(Colet colet_1) {
@@ -39,10 +42,17 @@ void Colet::generare_AWB(Colet colet_1) {
     colet_1.AWB = random_number;
 
     std :: cout << "AWB-ul coletului dvs este :" << colet_1.AWB << "\n";
+
+    if (colet_1.AWB == 0)
+        throw eroare_colet("Nu s-a creat AWB pentru colet");
 }
 
 int Colet :: getAWB() const {
     return AWB;
+}
+
+double Colet::get_pret() const {
+    return distanta * greutate;
 }
 
 void Colet::Starea_colet(Colet colet_1) {

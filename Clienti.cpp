@@ -23,14 +23,11 @@ std :: ostream& operator<<(std::ostream& os, const Client& cl){
     return os;
 }
 
-//Client ::~Client() {}
+Expeditor::Expeditor(const std::string &nume_, const std::string &prenume_, const std::string &telefon_,
+                     const std::string &adresa_, const Colet &colet1_) : Client(nume_,prenume_,telefon_,adresa_),
+                                                                         colet1(colet1_){}
 
-Expeditor ::Expeditor(const std::string &nume_, const std::string &prenume_, const std::string &telefon_, const std::string &adresa_, int suma_) :
-            Client(nume_, prenume_, telefon_, adresa_), suma(suma_) {}
 
-int Expeditor::get_suma() const {
-    return suma;
-}
 void Expeditor::add_colet(Colet colet) {
     colete.push_back(colet);
 }

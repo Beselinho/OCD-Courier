@@ -27,15 +27,15 @@ public:
     virtual ~Client() = default;
 };
 
+class Colet;
 
 class Expeditor : public Client{
 private:
-    int suma;
+    Colet colet1;
     std :: vector<Colet> colete;
 public:
-    Expeditor(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int suma_);
 
-    int get_suma () const;
+    Expeditor(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, const Colet& colet1_);
 
     void add_colet(Colet colet);
 
@@ -43,8 +43,8 @@ public:
 
     void Anulare_colet(const int& AWB);
 
-     ~Expeditor() override = default;
 
+    //Expeditor(const char string[5], const char string1[8], const char string2[12], const char string3[14], Colet colet);
 };
 
 class Destinatar : public Client{
@@ -52,8 +52,6 @@ private:
     int cod_primire;
 public:
     Destinatar(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int cod_primire);
-
-     ~Destinatar() override = default;
 
     void generare_cod_primire(Destinatar dest_1);
 };
