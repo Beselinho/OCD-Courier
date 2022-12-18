@@ -46,7 +46,6 @@ public:
 class Curier_de_noapte : public Curier{
 private :
     int experienta;
-    double spor_de_vechime;
     double spor_de_noapte;
 public:
     Curier_de_noapte(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_, double spor_de_noapte);
