@@ -34,9 +34,8 @@ public:
 class Curier_de_zi : public Curier{
 private:
     int experienta;
-    double spor_de_vechime;
 public:
-    Curier_de_zi(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_, double spor_de_vechime_);
+    Curier_de_zi(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_);
 
     double bonus_salariu() const override;
 
@@ -50,7 +49,7 @@ private :
     double spor_de_vechime;
     double spor_de_noapte;
 public:
-    Curier_de_noapte(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_, double spor_de_vechime_, double spor_de_noapte);
+    Curier_de_noapte(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_, double spor_de_noapte);
 
     double bonus_salariu() const override;
 

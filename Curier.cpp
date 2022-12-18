@@ -15,19 +15,18 @@ std :: ostream& operator<<(std::ostream& os, const Curier& cr){
 
 
 
-Curier_de_zi ::Curier_de_zi(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_, double spor_de_vechime_) :
-        Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), experienta(experienta_), spor_de_vechime{spor_de_vechime_} {}
+Curier_de_zi ::Curier_de_zi(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_, int experienta_) :
+        Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), experienta(experienta_) {}
 
 double Curier_de_zi::bonus_salariu() const {
     double bonus = 0;
         if(experienta <= 5)
-            bonus = spor_de_vechime * salariu;
+            bonus = 0.1 * salariu;
         else
-            if(experienta > 5 && experienta <= 15)
-                bonus = spor_de_vechime * salariu;
+            if(experienta <= 15)
+                bonus = 0.25 * salariu;
             else
-                if(experienta > 15)
-                    bonus = spor_de_vechime * salariu;
+                    bonus = 0.35 * salariu;
     std :: cout << "Totalul de bonus : " << bonus << "\n";
     return 1;
 }
@@ -42,19 +41,18 @@ void Curier_de_zi::lista_curieri_1(Curier* curier_) {
 }
 
 Curier_de_noapte ::Curier_de_noapte(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_,
-                                    int experienta_, double spor_de_vechime_, double spor_de_noapte_) :
-                   Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), experienta(experienta_), spor_de_vechime{spor_de_vechime_}, spor_de_noapte(spor_de_noapte_) {}
+                                    int experienta_, double spor_de_noapte_) :
+                   Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), experienta(experienta_),spor_de_noapte(spor_de_noapte_) {}
 
 double Curier_de_noapte::bonus_salariu() const {
     double bonus = 0;
         if(experienta <= 5)
-            bonus = spor_de_vechime * salariu + spor_de_noapte * salariu;
+            bonus = 0.1 * salariu + spor_de_noapte * salariu;
         else
-            if(experienta > 5 && experienta <= 15)
-                bonus = spor_de_vechime * salariu + spor_de_noapte * salariu;
+            if(experienta <= 15)
+                bonus = 0.25 * salariu + spor_de_noapte * salariu;
                 else
-                    if(experienta > 15)
-                        bonus = spor_de_vechime * salariu + spor_de_noapte * salariu;
+                        bonus = 0.35 * salariu + spor_de_noapte * salariu;
 
     std :: cout << "Totalul de bonus : " << bonus << "\n";
     return 1;

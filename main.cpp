@@ -13,9 +13,9 @@ using std :: vector;
 
 int main() {
 
-    Curier_de_zi crz_1{"Pintea", "0747399860", "Dacia", 1, 3650, 1, 20,0.4};
-    Curier_de_zi crz_2{"Andrusca", "0789394461", "Ford", 0, 3000, 1,10,0.2};
-    Curier_de_noapte crn_1{"Toader", "0747123987", "Volkswagen", 1, 4100, 1, 3, 0.1, 0.25};
+    Curier_de_zi crz_1{"Pintea", "0747399860", "Dacia", 1, 3650, 1, 20};
+    Curier_de_zi crz_2{"Andrusca", "0789394461", "Ford", 0, 3000, 1,10};
+    Curier_de_noapte crn_1{"Toader", "0747123987", "Volkswagen", 1, 4100, 1, 3, 0.25};
     //Curier cr_4{"Intotero", "0740420691", "Dacia", 1, 3870, 0};
 
 

@@ -12,7 +12,6 @@ double Factura::Verificare() const {
     try {
         if (suma <= colet.get_pret()){
             throw eroare_plata("Suma platita nu e buna");
-            std::cout << "bun";
         }
     }catch (eroare_plata &err){
         std :: cout << err.what() << "\n";
