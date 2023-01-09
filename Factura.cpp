@@ -9,15 +9,10 @@ std :: ostream& operator<<(std::ostream& os, const Factura& f){
 }
 
 double Factura::Verificare() const {
-    try {
         if (suma <= colet.get_pret()){
             throw eroare_plata("Suma platita nu e buna");
         }
-    }catch (eroare_plata &err){
-        std :: cout << err.what() << "\n";
-    }
-
-    return 1;
+        return 0;
 }
 
 Factura_card::Factura_card(double suma_, const Colet &colet_, const std::string &nume_card_, const std::string &iban_) :

@@ -24,7 +24,11 @@ protected:
 public:
     friend std :: ostream &operator<<(std :: ostream &os, const Client &client_);
 
+    virtual std::shared_ptr<Client> clone() const = 0;
+
     virtual ~Client() = default;
+
+    virtual void Evaluare_servicii() const = 0;
 };
 
 class Colet;
@@ -43,17 +47,25 @@ public:
 
     void Anulare_colet(const int& AWB);
 
+    void Evaluare_servicii() const override;
 
-    //Expeditor(const char string[5], const char string1[8], const char string2[12], const char string3[14], Colet colet);
+    std::shared_ptr<Client> clone() const override { return std::make_shared<Expeditor>(*this); }
+
 };
 
 class Destinatar : public Client{
 private:
-    int cod_primire;
+    int cod_primire = 0;
 public:
     Destinatar(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int cod_primire);
 
-    void generare_cod_primire(Destinatar dest_1);
+    void generare_cod_primire();
+
+    void Evaluare_servicii() const override;
+
+    std::shared_ptr<Client> clone() const override { return std::make_shared<Destinatar>(*this); }
+
+
 };
 
 #endif //OOP_CLIENTI_H

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Curier.h"
+#include <utility>
 
 
 class Colet {
@@ -14,13 +15,19 @@ protected:
     float distanta = 0;
     std :: string detalii = "";
     int stare_colet = 0;
-    Curier curier;
+    Curier curier1;
 public :
-    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier& curier_);
+    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier curier1);
 
     Colet(const Colet &other) = default;
 
-    Colet &operator=(const Colet &other) = default;
+    Colet &operator=(const Colet &other){
+        if(this != &other){
+            auto tmp_Colet{other};
+            std :: swap(curier1, tmp_Colet.curier1);
+        }
+        return *this;
+    };
 
     ~Colet() = default;
 
@@ -33,6 +40,8 @@ public :
     //void primire_colet()
 
     int getAWB() const;
+
+    int getStareColet() const;
 
     double get_pret() const;
 
