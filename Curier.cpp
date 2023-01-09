@@ -1,5 +1,5 @@
-#include "Curier.h"
 //#include <vector>
+#include "Curier.h"
 
 Curier ::Curier(const std :: string& nume_, const std :: string& telefon_, const std :: string& masina_, int stare_masina_, int salariu_, int livrari_efectuate_) :
                 nume{nume_}, telefon{telefon_}, masina{masina_}, stare_masina{stare_masina_}, salariu{salariu_}, livrari_efectuate{livrari_efectuate_} {}
@@ -21,9 +21,8 @@ Curier_de_zi ::Curier_de_zi(const std::string &nume_, const std::string &telefon
 
 
 
-Curier_de_noapte ::Curier_de_noapte(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_,
-                                    double spor_de_noapte_) :
-        Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_), spor_de_noapte(spor_de_noapte_) {}
+Curier_de_noapte ::Curier_de_noapte(const std::string &nume_, const std::string &telefon_, const std::string &masina_, int stare_masina, int salariu_, int livrari_efectuate_ ) :
+        Curier(nume_, telefon_, masina_, stare_masina, salariu_, livrari_efectuate_) {}
 
 int Curier::getSal() const {
     return salariu;

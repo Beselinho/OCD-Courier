@@ -20,5 +20,8 @@ public:
 
 };
 
-
+template <class T> void Baza_de_date ::adaugare_curieri(std::string nume_, std::string telefon_, std::string masina_, int stare_masina_, int salariu_, int livrari_) {
+    // Curier_de_zi crz_1{"Pintea", "0747399860", "Dacia", 1, 3650, 1};
+    this->all_curieri.push_back(std::make_shared<T>(nume_,telefon_,masina_,stare_masina_,salariu_,livrari_));
+}
 #endif //OOP_BAZA_DE_DATE_H

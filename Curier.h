@@ -44,7 +44,7 @@ class Curier_de_noapte : public Curier{
 private :
     double spor_de_noapte = 0.25;
 public:
-    Curier_de_noapte(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, double spor_de_noapte);
+    Curier_de_noapte(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_);
 
     double bonus_salariu();
 
