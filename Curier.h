@@ -16,18 +16,19 @@ protected:
     int stare_masina;
     int salariu;
     int livrari_efectuate;
-    std::vector<Curier> curieri;
 
 public:
     Curier(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_);
-
+    Curier();
     Curier(const Curier &other) = default;
 
     Curier &operator=(const Curier &other) = default;
 
     friend std :: ostream &operator<<(std :: ostream &os, const Curier &client_);
 
-    virtual ~Curier() = default;
+    virtual ~Curier(){
+        nr_curieri--;
+    }
 
     int getSal() const;
 
@@ -41,7 +42,7 @@ public:
 
 class Curier_de_noapte : public Curier{
 private :
-    double spor_de_noapte;
+    double spor_de_noapte = 0.25;
 public:
     Curier_de_noapte(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_, double spor_de_noapte);
 
@@ -49,7 +50,7 @@ public:
 
 };
 
-//int Curier::nr_curieri;
+
 
 
 #endif //OOP_CURIER_H

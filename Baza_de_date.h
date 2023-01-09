@@ -14,8 +14,9 @@ public:
 
     ~Baza_de_date() = default;
 
-    void total_salarii (/*Curier c1*/);
+    void total_salarii ();
 
+    template<class T> void adaugare_curieri(std::string nume_, std::string telefon_, std::string masina_, int stare_masina_, int salariu_, int livrari_);
 
 };
 

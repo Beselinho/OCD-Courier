@@ -10,14 +10,13 @@ using std :: vector;
 
 //class Client
 
-
+int Curier::nr_curieri = 0;
 int main() {
 
     Baza_de_date b1;
-
-    Curier_de_zi crz_1{"Pintea", "0747399860", "Dacia", 1, 3650, 1};
-    Curier_de_zi crz_2{"Andrusca", "0789394461", "Ford", 0, 3000, 1};
-    Curier_de_noapte crn_1{"Toader", "0747123987", "Volkswagen", 1, 4100, 1,0.25};
+    b1.adaugare_curieri<Curier_de_zi>("Pintea", "0747399860", "Dacia", 1, 3650, 1);
+    b1.adaugare_curieri<Curier_de_zi>("Andrusca", "0789394461", "Ford", 0, 3000, 1);
+    b1.adaugare_curieri<Curier_de_noapte>("Toader", "0747123987", "Volkswagen", 1, 4100, 1);
 
 
     Destinatar dest_1{"Dan", "Carmen", "0741568721", "Strada Camplung", 1234};
@@ -25,10 +24,9 @@ int main() {
     Destinatar dest_3{"Anton", "Anton", "0747693690", "Strada Neagoe Basarab", 8935};
     Destinatar dest_4{"Melecsanu", "Viorel", "0745643699", "Strada Gheorgeni", 1568};
 
-    Colet c1{1234567, "Documente", 0, 56, "Important", 0,crz_1};
-    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile",1,crn_1};
-    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2,crz_1};
-
+    Colet c1{1234567, "Documente", 0, 56, "Important", 0, *b1.all_curieri.at(0)};
+    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile",1, *b1.all_curieri.at(1)};
+    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, *b1.all_curieri.at(2)};
 
 
     Expeditor ex_1("Love", "Petrica", "0741273748", "Strada Principala", c1);
