@@ -3,7 +3,7 @@
 #include <random>
 #include "Exceptii.h"
 
-Colet :: Colet (int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, Curier curier1_) :
+Colet :: Colet (int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier curier1_) :
         AWB{AWB_}, nume{nume_}, greutate{greutate_}, distanta{distanta_}, detalii{detalii_}, stare_colet{stare_colet_}, curier1{curier1_} {}
 
 std :: ostream& operator<<(std::ostream& os, const Colet& c){
