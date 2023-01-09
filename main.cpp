@@ -59,7 +59,7 @@ int main() {
     ///Anulare colet :
     ex_1.Anulare_colet(1234567);
 
-    crn_1.bonus_salariu();
+    //crn_1.bonus_salariu();
     return 0;
 }
 
