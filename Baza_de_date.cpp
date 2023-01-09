@@ -2,9 +2,9 @@
 #include <iostream>
 #include "Curier.h"
 
-void Baza_de_date::total_salarii(/*Curier c1*/) {
+void Baza_de_date::total_salarii() {
     double total_sal = 0;
-    for(auto i = all_curieri.begin(); i <= all_curieri.end(); i++){
+    for(unsigned long long i = 0; i < all_curieri.size(); i++){
         std :: shared_ptr p = std ::dynamic_pointer_cast<Curier_de_noapte>(all_curieri.at(i));
         if(p == nullptr){
             std :: cout << "Acesta nu este un curier de noapte!";

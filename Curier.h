@@ -49,6 +49,7 @@ public:
 
 };
 
+int Curier::nr_curieri = 0;
 
 
 #endif //OOP_CURIER_H
