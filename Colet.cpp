@@ -28,9 +28,9 @@ void Colet::Depunere_Colet() {
     std :: cout << "Pretul (in RON) pentru colet este :" << (distanta * greutate) << "\n";
 
         if (greutate == 0)
-            throw eroare_colet("Nu s-a introdus greutatea coletului");
+            throw eroare_colet("Nu s-a introdus corect greutatea coletului");
         if (distanta == 0)
-            throw eroare_colet("Nu s-a introdus distanta");
+            throw eroare_colet("Nu s-a introdus corect distanta");
 }
 
 void Colet::generare_AWB(Colet colet_1) {
