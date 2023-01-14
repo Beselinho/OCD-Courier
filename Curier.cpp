@@ -2,10 +2,10 @@
 #include "Curier.h"
 
 Curier ::Curier(const std :: string& nume_, const std :: string& telefon_, const std :: string& masina_, int stare_masina_, int salariu_, int livrari_efectuate_) :
-                nume{nume_}, telefon{telefon_}, masina{masina_}, stare_masina{stare_masina_}, salariu{salariu_}, livrari_efectuate{livrari_efectuate_} {}
-Curier ::Curier(){
+                nume{nume_}, telefon{telefon_}, masina{masina_}, stare_masina{stare_masina_}, salariu{salariu_}, livrari_efectuate{livrari_efectuate_} {nr_curieri++;}
+/*Curier ::Curier(){
     nr_curieri++;
-}
+}*/
 std :: ostream& operator<<(std::ostream& os, const Curier& cr){
     os << "Nume Curier :" << cr.nume << "\n";
     os << "Numar de telefon: " << cr.telefon  <<"\n";

@@ -7,7 +7,7 @@
 #include "Colet.h"
 
 class Baza_de_date {
-    std :: vector<std::shared_ptr<Colet>> all_colete;
+    //std :: vector<std::shared_ptr<Colet>> all_colete;
 public:
 
     std :: vector<std::shared_ptr<Curier>> all_curieri;

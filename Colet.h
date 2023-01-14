@@ -17,7 +17,7 @@ protected:
     int stare_colet = 0;
     Curier curier1;
 public :
-    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier curier1);
+    Colet(int AWB_, const std :: string& nume_, float greutate_, float distanta_, const std :: string& detalii_, int stare_colet_, const Curier& curier1);
 
     Colet(const Colet &other) = default;
 

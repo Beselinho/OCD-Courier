@@ -19,7 +19,7 @@ protected:
 
 public:
     Curier(const std::string& nume_, const std::string& telefon_, const std::string& masina_, int stare_masina, int salariu_, int livrari_efectuate_);
-    Curier();
+    //Curier();
     Curier(const Curier &other) = default;
 
     Curier &operator=(const Curier &other) = default;
