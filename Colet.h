@@ -11,8 +11,8 @@ class Colet {
 protected:
     int AWB = 0;
     std :: string nume = "";
-    float greutate = 1;
-    float distanta = 1;
+    float greutate = 0;
+    float distanta = 0;
     std :: string detalii = "";
     int stare_colet = 0;
     Curier curier1;

@@ -20,16 +20,16 @@ std :: ostream& operator<<(std::ostream& os, const Colet& c){
 void Colet::Depunere_Colet() {
     std :: cout << "Completati datele coletului : "<< "\n";
     std :: cout << "Nume colet :" << "\n";
-    std :: cin >> this->nume;
+    std :: cin >> nume;
     std :: cout << "Greutate colet :" << "\n";
-    std :: cin >> this->greutate;
-    if (this->greutate <= 0)
+    std :: cin >> greutate;
+    if (greutate <= 0)
         throw eroare_colet("Nu s-a introdus corect greutatea coletului");
     std :: cout << "Distanta (in km) :" << "\n";
-    std :: cin >> this->distanta;
-    if (this->distanta <= 0)
+    std :: cin >> distanta;
+    if (distanta <= 0)
         throw eroare_colet("Nu s-a introdus corect distanta");
-    std :: cout << "Pretul (in RON) pentru colet este :" << (this->distanta *this->greutate) << "\n";
+    std :: cout << "Pretul (in RON) pentru colet este :" << (distanta * greutate) << "\n";
 
 }
 
