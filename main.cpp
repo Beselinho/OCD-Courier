@@ -43,8 +43,8 @@ int main() {
     }catch (eroare_colet &err){
         std :: cout << err.what() << "\n" ;}
     fac.Verificare();
-   ex_1.Evaluare_servicii();
-   dest_1.Evaluare_servicii();
+   //ex_1.Evaluare_servicii();a
+   //dest_1.Evaluare_servicii();
    /// Verificare stare colet :
     ex_1.add_colet(c1);
     ex_1.add_colet(c2);

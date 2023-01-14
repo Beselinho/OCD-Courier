@@ -20,17 +20,17 @@ std :: ostream& operator<<(std::ostream& os, const Colet& c){
 void Colet::Depunere_Colet() {
     std :: cout << "Completati datele coletului : "<< "\n";
     std :: cout << "Nume colet :" << "\n";
-    std :: cin >> nume;
+    std :: cin >> this->nume;
     std :: cout << "Greutate colet :" << "\n";
-    std :: cin >> greutate;
+    std :: cin >> this->greutate;
+    if (this->greutate <= 0)
+        throw eroare_colet("Nu s-a introdus corect greutatea coletului");
     std :: cout << "Distanta (in km) :" << "\n";
-    std :: cin >> distanta;
-    std :: cout << "Pretul (in RON) pentru colet este :" << (distanta * greutate) << "\n";
+    std :: cin >> this->distanta;
+    if (this->distanta <= 0)
+        throw eroare_colet("Nu s-a introdus corect distanta");
+    std :: cout << "Pretul (in RON) pentru colet este :" << (this->distanta *this->greutate) << "\n";
 
-        if (greutate == 0)
-            throw eroare_colet("Nu s-a introdus corect greutatea coletului");
-        if (distanta == 0)
-            throw eroare_colet("Nu s-a introdus corect distanta");
 }
 
 void Colet::generare_AWB(Colet colet_1) {
