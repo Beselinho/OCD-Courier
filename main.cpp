@@ -38,7 +38,7 @@ int main() {
 
     b1.total_salarii();
    try{
-        c1.Depunere_Colet();
+       // c1.Depunere_Colet();
         c1.generare_AWB(c1);
     }catch (eroare_colet &err){
         std :: cout << err.what() << "\n" ;}
