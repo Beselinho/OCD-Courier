@@ -33,7 +33,7 @@ public :
 
     friend std :: ostream &operator<<(std :: ostream &os, const Colet &colet_);
 
-    //void Depunere_Colet();
+    void Depunere_Colet();
 
     static void generare_AWB(Colet colet_1);
 
