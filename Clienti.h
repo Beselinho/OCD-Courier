@@ -18,7 +18,7 @@ protected:
     std :: string prenume;
     std :: string telefon;
     std :: string adresa;
-    int rating_serviciu;
+    int rating_serviciu = 0;
 
 public:
     Client(const string &nume, const string &prenume, const string &telefon, const string &adresa, int ratingServiciu);
