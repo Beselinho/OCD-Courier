@@ -3,6 +3,7 @@
 //
 
 #include "Clienti.h"
+//#include "Colet.h"
 
 Client &Client::operator=(const Client &other) {
     nume = other.nume;
@@ -75,6 +76,18 @@ void Destinatar::generare_cod_primire() {
 }
 
 void Destinatar::Evaluare_servicii() const {
-    std :: cout <<"Servicii bune";
-    // std :: cout << "Servicii nobun";
+    if(rating_serviciu > 0)
+    std :: cout <<"\nServicii bune";
+    else
+        std :: cout << "\nServicii nobun";
+}
+
+void Destinatar::plata_ramburs(Factura &f) {
+    if(f.Verificare()){
+        std :: cout << "\nOptiune noua";
+        this->rating_serviciu++;
+    }
+
+    
+    std :: cout << "\nPlata cu ramburs efectuata!";
 }

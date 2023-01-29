@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Baza_de_date.h"
+#include "Evidenta_curieri.h"
 
-void Baza_de_date::total_salarii() {
+void Evidenta_curieri::total_salarii() {
     double total_sal = 0;
     for(unsigned long long i = 0; i < all_curieri.size(); i++){
         std :: shared_ptr p = std ::dynamic_pointer_cast<Curier_de_noapte>(all_curieri.at(i));

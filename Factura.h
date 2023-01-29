@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "Colet.h"
-#include "Clienti.h"
+//#include "Clienti.h"
 
 class Colet;
 
@@ -16,12 +16,12 @@ private:
 public:
 
     Factura(double suma_, const Colet& colet_);
+    virtual ~Factura() = default;
 
     friend std :: ostream &operator<<(std :: ostream &os, const Factura &client_);
 
     double Verificare() const;
 
-    virtual ~Factura() = default;
 
 };
 

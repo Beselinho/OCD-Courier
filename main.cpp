@@ -4,7 +4,8 @@
 #include "Clienti.h"
 #include "Factura.h"
 #include "Exceptii.h"
-#include "Baza_de_date.h"
+#include "Evidenta_curieri.h"
+#include "Factura_electronica.h"
 
 using std :: vector;
 
@@ -13,7 +14,7 @@ using std :: vector;
 int Curier::nr_curieri = 0;
 int main() {
 
-    Baza_de_date b1;
+    Evidenta_curieri b1;
     b1.adaugare_curieri<Curier_de_zi>("Pintea", "0747399860", "Dacia", 1, 3650, 1);
     b1.adaugare_curieri<Curier_de_zi>("Andrusca", "0789394461", "Ford", 0, 3000, 1);
     b1.adaugare_curieri<Curier_de_noapte>("Toader", "0747123987", "Volkswagen", 1, 4100, 1);
@@ -34,6 +35,7 @@ int main() {
 
     Factura fac(56, c1);
     Factura_card facC(100,c2,"Love Petrica", "RO 0040 1896 2596");
+    Factura_electronica fac_el(56,c1,"Love Petrica", "RO 0040 1896 2596", "AmPlatit.ro");
 
 
     b1.total_salarii();
@@ -56,6 +58,11 @@ int main() {
     std :: cout << "\n";
     ///Anulare colet :
     ex_1.Anulare_colet(1234567);
+    dest_1.plata_ramburs(fac);
+    dest_1.plata_ramburs(fac_el);
+
+    std :: shared_ptr<Client> dptr = std::make_shared<Destinatar>();
+    dptr->Evaluare_servicii();
 
     return 0;
 }

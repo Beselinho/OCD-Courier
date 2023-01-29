@@ -12,7 +12,7 @@ double Factura::Verificare() const {
         if (suma <= colet.get_pret()){
             throw eroare_plata("Suma platita nu e buna");
         }
-        return 0;
+        return 1;
 }
 
 Factura_card::Factura_card(double suma_, const Colet &colet_, const std::string &nume_card_, const std::string &iban_) :

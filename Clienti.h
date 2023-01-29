@@ -5,6 +5,7 @@
 #include <vector>
 #include <random>
 #include "Colet.h"
+#include "Factura.h"
 
 using std :: string;
 using std :: vector;
@@ -17,8 +18,10 @@ protected:
     std :: string prenume;
     std :: string telefon;
     std :: string adresa;
+    int rating_serviciu;
 
     Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_);
+    Client() = default;
     Client(const Client& other) = default;
     Client &operator=(const Client& other);
 public:
@@ -40,6 +43,9 @@ private:
 public:
 
     Expeditor(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, const Colet& colet1_);
+    //Expeditor() = default;
+
+    ~Expeditor() override = default;
 
     void add_colet(Colet colet);
 
@@ -58,10 +64,16 @@ private:
     int cod_primire = 0;
 public:
     Destinatar(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int cod_primire);
+    Destinatar() = default;
+
+    ~Destinatar() override = default;
+
 
     void generare_cod_primire();
 
     void Evaluare_servicii() const override;
+
+    void plata_ramburs(Factura &);
 
     std::shared_ptr<Client> clone() const override { return std::make_shared<Destinatar>(*this); }
 
