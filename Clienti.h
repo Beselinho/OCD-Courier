@@ -20,7 +20,7 @@ protected:
     std :: string adresa;
     int rating_serviciu;
 
-    Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_);
+    Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int rating_serviciu_);
     Client() = default;
     Client(const Client& other) = default;
     Client &operator=(const Client& other);
@@ -42,7 +42,8 @@ private:
     std :: vector<Colet> colete;
 public:
 
-    Expeditor(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, const Colet& colet1_);
+    Expeditor(const string &nume, const string &prenume, const string &telefon, const string &adresa,
+              int ratingServiciu, const Colet &colet1);
     //Expeditor() = default;
 
     ~Expeditor() override = default;
@@ -63,7 +64,9 @@ class Destinatar : public Client{
 private:
     int cod_primire = 0;
 public:
-    Destinatar(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int cod_primire);
+    Destinatar(const string &nume, const string &prenume, const string &telefon, const string &adresa,
+               int ratingServiciu, int codPrimire);
+
     Destinatar() = default;
 
     ~Destinatar() override = default;

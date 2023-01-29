@@ -14,8 +14,8 @@ Client &Client::operator=(const Client &other) {
     return *this;
 }
 
-Client :: Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_) :
-        nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_} {}
+Client :: Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int rating_serviciu_) :
+        nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_}, rating_serviciu{rating_serviciu_} {}
 
 std :: ostream& operator<<(std::ostream& os, const Client& cl){
     os << "Nume:" << cl.nume << "\n";
@@ -25,9 +25,7 @@ std :: ostream& operator<<(std::ostream& os, const Client& cl){
     return os;
 }
 
-Expeditor::Expeditor(const std::string &nume_, const std::string &prenume_, const std::string &telefon_,
-                     const std::string &adresa_, const Colet &colet1_) : Client(nume_,prenume_,telefon_,adresa_),
-                                                                         colet1(colet1_){}
+
 
 
 void Expeditor::add_colet(Colet colet) {
@@ -63,8 +61,12 @@ void Expeditor::Evaluare_servicii() const {
     else
         std :: cout << "Servicii nobun";
 }
-Destinatar ::Destinatar(const std::string &nume_, const std::string &prenume_, const std::string &telefon_, const std::string &adresa_, int cod_primire_) :
-             Client(nume_, prenume_, telefon_, adresa_), cod_primire{cod_primire_} {}
+
+Expeditor::Expeditor(const string &nume, const string &prenume, const string &telefon, const string &adresa,
+                     int ratingServiciu, const Colet &colet1) : Client(nume, prenume, telefon, adresa, ratingServiciu),
+                                                                colet1(colet1) {}
+
+
 
 void Destinatar::generare_cod_primire() {
     std::random_device rd;
@@ -92,3 +94,7 @@ void Destinatar::plata_ramburs(Factura const &f) {
     
     std :: cout << "\nPlata cu ramburs efectuata!";
 }
+
+Destinatar::Destinatar(const string &nume, const string &prenume, const string &telefon, const string &adresa,
+                       int ratingServiciu, int codPrimire) : Client(nume, prenume, telefon, adresa, ratingServiciu),
+                                                             cod_primire(codPrimire) {}
