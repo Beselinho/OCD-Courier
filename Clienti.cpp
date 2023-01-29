@@ -14,8 +14,6 @@ Client &Client::operator=(const Client &other) {
     return *this;
 }
 
-Client :: Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int rating_serviciu_) :
-        nume{nume_}, prenume{prenume_}, telefon{telefon_}, adresa{adresa_}, rating_serviciu{rating_serviciu_} {}
 
 std :: ostream& operator<<(std::ostream& os, const Client& cl){
     os << "Nume:" << cl.nume << "\n";
@@ -25,7 +23,9 @@ std :: ostream& operator<<(std::ostream& os, const Client& cl){
     return os;
 }
 
-
+Client::Client(const string &nume, const string &prenume, const string &telefon, const string &adresa,
+               int ratingServiciu) : nume(nume), prenume(prenume), telefon(telefon), adresa(adresa),
+                                     rating_serviciu(ratingServiciu) {}
 
 
 void Expeditor::add_colet(Colet colet) {

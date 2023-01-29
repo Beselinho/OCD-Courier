@@ -20,7 +20,10 @@ protected:
     std :: string adresa;
     int rating_serviciu;
 
-    Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int rating_serviciu_);
+public:
+    Client(const string &nume, const string &prenume, const string &telefon, const string &adresa, int ratingServiciu);
+
+protected:
     Client() = default;
     Client(const Client& other) = default;
     Client &operator=(const Client& other);
