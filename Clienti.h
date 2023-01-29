@@ -21,7 +21,7 @@ protected:
     int rating_serviciu;
 
     Client(const string& nume_, const string& prenume_, const string& telefon_, const string& adresa_, int rating_serviciu_);
-    Client() = default;
+    //Client() = default;
     Client(const Client& other) = default;
     Client &operator=(const Client& other);
 public:
@@ -67,7 +67,7 @@ public:
     Destinatar(const string &nume, const string &prenume, const string &telefon, const string &adresa,
                int ratingServiciu, int codPrimire);
 
-    Destinatar() = default;
+    //Destinatar() = default;
 
     ~Destinatar() override = default;
 
