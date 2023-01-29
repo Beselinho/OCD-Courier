@@ -73,7 +73,7 @@ public:
 
     void Evaluare_servicii() const override;
 
-    void plata_ramburs(Factura &);
+    void plata_ramburs(Factura const &);
 
     std::shared_ptr<Client> clone() const override { return std::make_shared<Destinatar>(*this); }
 

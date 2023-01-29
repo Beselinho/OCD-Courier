@@ -10,6 +10,7 @@ Client &Client::operator=(const Client &other) {
     prenume = other.prenume;
     telefon = other.telefon;
     adresa = other.adresa;
+    rating_serviciu = other.rating_serviciu;
     return *this;
 }
 
@@ -82,10 +83,10 @@ void Destinatar::Evaluare_servicii() const {
         std :: cout << "\nServicii nobun";
 }
 
-void Destinatar::plata_ramburs(Factura &f) {
+void Destinatar::plata_ramburs(Factura const &f) {
     if(f.Verificare()){
         std :: cout << "\nOptiune noua";
-        this->rating_serviciu++;
+        this->rating_serviciu = 1;
     }
 
     
