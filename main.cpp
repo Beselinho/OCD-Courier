@@ -14,10 +14,10 @@ using std :: vector;
 int Curier::nr_curieri = 0;
 int main() {
 
-    Evidenta_curieri b1;
-    b1.adaugare_curieri<Curier_de_zi>("Pintea", "0747399860", "Dacia", 1, 3650, 1);
-    b1.adaugare_curieri<Curier_de_zi>("Andrusca", "0789394461", "Ford", 0, 3000, 1);
-    b1.adaugare_curieri<Curier_de_noapte>("Toader", "0747123987", "Volkswagen", 1, 4100, 1);
+    Evidenta_curieri *b1 = Evidenta_curieri::getInstance();
+    b1->adaugare_curieri<Curier_de_zi>("Pintea", "0747399860", "Dacia", 1, 3650, 1);
+    b1->adaugare_curieri<Curier_de_zi>("Andrusca", "0789394461", "Ford", 0, 3000, 1);
+    b1->adaugare_curieri<Curier_de_noapte>("Toader", "0747123987", "Volkswagen", 1, 4100, 1);
 
 
     Destinatar dest_1{"Dan", "Carmen", "0741568721", "Strada Camplung",0, 1234};
@@ -25,9 +25,9 @@ int main() {
     Destinatar dest_3{"Anton", "Anton", "0747693690", "Strada Neagoe Basarab",0, 8935};
     Destinatar dest_4{"Melecsanu", "Viorel", "0745643699", "Strada Gheorgeni",0, 1568};
 
-    Colet c1{1234567, "Documente", 0, 56, "Important", 0, *b1.all_curieri.at(0)};
-    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile",1, *b1.all_curieri.at(1)};
-    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, *b1.all_curieri.at(2)};
+    Colet c1{1234567, "Documente", 0, 56, "Important", 0, *b1->all_curieri.at(0)};
+    Colet c2{2222222 , "Boxe", 7.5, 167, "boxe audio voluminoase fragile",1, *b1->all_curieri.at(1)};
+    Colet c3{3333333, "Carti", 4, 89, "Carti de limba engleza", 2, *b1->all_curieri.at(2)};
 
 
     Expeditor ex_1("Love", "Petrica", "0741273748", "Strada Principala",0, c1);
@@ -38,7 +38,7 @@ int main() {
     Factura_electronica fac_el(56,c1,"Love Petrica", "RO 0040 1896 2596", "AmPlatit.ro");
 
 
-    b1.total_salarii();
+    b1->total_salarii();
    try{
         //c1.Depunere_Colet();
         c1.generare_AWB(c1);
@@ -60,9 +60,8 @@ int main() {
     ex_1.Anulare_colet(1234567);
     dest_1.plata_ramburs(fac);
     dest_1.plata_ramburs(fac_el);
-
-    std :: shared_ptr<Client> dptr = std::make_shared<Destinatar>();
-    dptr->Evaluare_servicii();
+    //std :: shared_ptr<Client> dptr = std::make_shared<Destinatar>();
+    //dptr->Evaluare_servicii();
 
     return 0;
 }

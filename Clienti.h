@@ -18,7 +18,7 @@ protected:
     std :: string prenume;
     std :: string telefon;
     std :: string adresa;
-    int rating_serviciu = 0;
+    int rating_serviciu = 0 ;
 
 public:
     Client(const string &nume, const string &prenume, const string &telefon, const string &adresa, int ratingServiciu);
@@ -82,6 +82,8 @@ public:
     void plata_ramburs(Factura const &);
 
     std::shared_ptr<Client> clone() const override { return std::make_shared<Destinatar>(*this); }
+
+
 
 
 };

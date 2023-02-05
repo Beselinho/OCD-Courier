@@ -5,8 +5,9 @@
 #include <vector>
 #include "Curier.h"
 #include "Colet.h"
+#include "Singleton.h"
 
-class Evidenta_curieri {
+class Evidenta_curieri: public Singleton<Evidenta_curieri> {
     //std :: vector<std::shared_ptr<Colet>> all_colete;
 public:
 
